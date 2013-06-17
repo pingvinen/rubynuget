@@ -1,7 +1,7 @@
 # encoding: UTF-8
 require './nuget'
 
-n = Nuget::NugetHelper::new()
+n = Nuget::NugetHelper.new()
 n.get_package("ServiceStack", "3.9.49")
 n.get_files("net35", "tmp")
 
