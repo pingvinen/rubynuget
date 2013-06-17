@@ -64,6 +64,18 @@ module Nuget
 		end
 
 
+		##
+		# Writes the full path of all package files to the console
+		##
+		def list_all_files()
+			@zip = Nuget::ZipHelper.new(@tmp) if @zip == nil
+
+			@zip.get_entries_from_dir("").each do |entry|
+				puts entry.name
+			end
+		end
+
+
 
 		##
 		# Download package

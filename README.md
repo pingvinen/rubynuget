@@ -30,3 +30,18 @@ n.get_files("net35", "path/where/you/want/the/files")
 n.get_package("MySql.Data", "6.6.5")
 n.get_files("net40", "path/where/you/want/the/files")
 ```
+
+
+
+### Figuring out which lib/ subdir to get files from
+
+The following will write the full path of all files in the package to the console.
+
+```ruby
+# encoding: UTF-8
+require './nuget'
+
+n = Nuget::NugetHelper.new()
+n.get_package("ServiceStack", "3.9.49")
+n.list_all_files()
+```
