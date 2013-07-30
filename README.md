@@ -1,3 +1,34 @@
+DEAD
+====
+
+I no longer maintain this repository. I have started using a simple bash script instead
+
+```bash
+#!/usr/bin/env bash
+
+TMPZIP=/tmp/from_nuget.zip
+TMPDIR=/tmp/from_nuget
+DEST=libs/
+
+function get_package() {
+  local name=$1
+	local version=$2
+	local dir=$3
+	echo "$name $version"
+	wget --quiet -O $TMPZIP http://packages.nuget.org/api/v2/package/$name/$version
+	unzip -q -o $TMPZIP lib/* -d $TMPDIR
+
+	find $TMPDIR/lib/$dir -type f \( -iname "*.dll" -o -iname "*.xml" \) -exec mv '{}' $DEST \;
+
+	rm $TMPDIR -rf
+	rm $TMPZIP
+}
+
+
+get_package "ServiceStack" "3.9.56" "net35"
+```
+
+
 Ruby Nuget tools
 ================
 
